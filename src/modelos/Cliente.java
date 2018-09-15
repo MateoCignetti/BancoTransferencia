@@ -5,6 +5,8 @@
  */
 package modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author agu
@@ -43,4 +45,11 @@ public class Cliente {
     public double getSueldoBase() {
         return saldoInicial;
     }
+
+    
+
+
+    
+    
+    
 }

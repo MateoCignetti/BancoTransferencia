@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/vistas/viewmodels/ClienteOption.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/servicios/ServicioTransferencia.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/repositorios/RepositorioTransferencia.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/vistas/view/VistaPrincipal.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/presentadores/PresentadorVistaPrincipal.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/repositorios/RepositorioCliente.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/servicios/ServicioCliente.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/modelos/Cliente.java</file>
-            <file>file:/C:/Users/elbat/Documents/NetBeansProjects/BancoTransferencia/src/modelos/Transferencia.java</file>
+            <file>file:/C:/Repositorios/BancoTransferencia/src/vistas/view/VistaPrincipal.java</file>
+            <file>file:/C:/Repositorios/BancoTransferencia/src/modelos/Cliente.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,7 +5,9 @@
  */
 package presentadores;
 
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.text.Document;
 import vistas.view.VistaPrincipal;
 import servicios.ServicioCliente;
 import servicios.ServicioTransferencia;
@@ -55,7 +57,8 @@ public class PresentadorVistaPrincipal {
             this.vistaPrincipal.getSaldoInicialTextField().setText("");
 
             //Mostrar mensaje de éxito.
-            JOptionPane.showMessageDialog(vistaPrincipal, "¡El empleado fue guardado correctamente!");
+            JOptionPane.showMessageDialog(vistaPrincipal, "¡El cliente fue guardado correctamente!");
+            actualizarMovimientos("Cliente guardado " + nombreCompleto + " " + dni + newline);
         } catch (IllegalArgumentException excepcion) {
             /*
             Llamé a "guardarDatosPersonales", pero ocurrió un error y por eso lanzó
@@ -73,15 +76,36 @@ public class PresentadorVistaPrincipal {
             ClienteOption clienteHacia = (ClienteOption) this.vistaPrincipal.getHaciaComboBox().getSelectedItem();
             String dniClienteHacia = clienteHacia.getDni();
             
+            if (clienteDesde.equals(clienteHacia)){
+                throw new Exception("¡Los clientes deben ser distintos!");
+            }
+            
             this.servicioTransferencia.realizarTransferencia(
                     this.servicioCliente.obtenerClienteSeleccionado(dniClienteDesde),
                     this.servicioCliente.obtenerClienteSeleccionado(dniClienteHacia),
                     this.vistaPrincipal.getMontoTextField().getText()
             );
+            
+            JOptionPane.showMessageDialog(vistaPrincipal, "¡La transferencia fue realizada correctamente!");
+            actualizarMovimientos("Transferencia de: " + clienteDesde.getNombreCompleto()
+                    + " a: " + clienteHacia.getNombreCompleto() + newline
+                    +  "monto inicial: " );
 
         } catch (Exception excepcion) {
             JOptionPane.showMessageDialog(vistaPrincipal, excepcion.getMessage());
         }
     }
+    
+    private void actualizarMovimientos(String movimiento){
+        try {
+            Document doc = this.vistaPrincipal.getMovimientosTextPane().getDocument();
+            Date date = new Date();
+             doc.insertString(doc.getLength(), date + " // " + movimiento, null);
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(vistaPrincipal, "¡Error al actualizar movimientos!");
+        }
+    }
+    
+    private static String newline = System.getProperty("line.separator");
 
 }

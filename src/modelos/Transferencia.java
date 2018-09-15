@@ -13,13 +13,25 @@ public class Transferencia {
     
     private Cliente clienteOrigen;
     private Cliente clienteDestinatario;
-    private double monto;
+    private double montoInicial;
+    private double montoFinal;
 
     public Transferencia(Cliente clienteOrigen, Cliente clienteDestinatario, double monto) {
         this.clienteOrigen = clienteOrigen;
         this.clienteDestinatario = clienteDestinatario;
-        this.monto = monto;
+        this.montoInicial = clienteOrigen.getSaldo();
+        this.montoFinal = montoInicial + monto;
     }
+
+    public double getMontoInicial() {
+        return montoInicial;
+    }
+
+    public double getMontoFinal() {
+        return montoFinal;
+    }
+    
+    
     
     
     

@@ -5,6 +5,7 @@
  */
 package vistas.viewmodels;
 
+
 /**
  *
  * @author Laboratorio
@@ -33,6 +34,23 @@ public class ClienteOption {
     @Override
     public String toString() {
         return nombreCompleto;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            throw new NullPointerException("¡El cliente es nulo!");
+        }
+        else if (!(obj instanceof ClienteOption)){
+            throw new IllegalArgumentException("¡El objeto no es un cliente!");
+        }
+        else {
+            ClienteOption cliente = (ClienteOption) obj;
+            if (this.getDni().equals(cliente.getDni())) {
+                return true;
+            }
+        }
+        return false;
     }
     
     

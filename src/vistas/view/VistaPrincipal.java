@@ -8,6 +8,7 @@ package vistas.view;
 import vistas.viewmodels.ClienteOption;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import presentadores.PresentadorVistaPrincipal;
 
 /**
@@ -54,8 +55,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         desdeComboBox = new javax.swing.JComboBox<>();
         haciaComboBox = new javax.swing.JComboBox<>();
         movimientosPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        movimientosTextPane = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        appTabbedPane.setPreferredSize(new java.awt.Dimension(600, 350));
 
         clientesPanel.setToolTipText("");
 
@@ -81,7 +86,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(clientesPanelLayout.createSequentialGroup()
                 .addGroup(clientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(clientesPanelLayout.createSequentialGroup()
-                        .addContainerGap(316, Short.MAX_VALUE)
+                        .addContainerGap(539, Short.MAX_VALUE)
                         .addComponent(cargarButton))
                     .addGroup(clientesPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -117,7 +122,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addGroup(clientesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saldoInicialLabel)
                     .addComponent(saldoInicialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(cargarButton)
                 .addContainerGap())
         );
@@ -158,7 +163,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                             .addComponent(desdeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(haciaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferenciasPanelLayout.createSequentialGroup()
-                        .addGap(0, 289, Short.MAX_VALUE)
+                        .addGap(0, 512, Short.MAX_VALUE)
                         .addComponent(transferirButton)))
                 .addContainerGap())
         );
@@ -177,22 +182,31 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addGroup(transferenciasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(montoLabel)
                     .addComponent(montoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addComponent(transferirButton)
                 .addContainerGap())
         );
 
         appTabbedPane.addTab("Transferencias", transferenciasPanel);
 
+        movimientosTextPane.setEditable(false);
+        jScrollPane1.setViewportView(movimientosTextPane);
+
         javax.swing.GroupLayout movimientosPanelLayout = new javax.swing.GroupLayout(movimientosPanel);
         movimientosPanel.setLayout(movimientosPanelLayout);
         movimientosPanelLayout.setHorizontalGroup(
             movimientosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGroup(movimientosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addContainerGap())
         );
         movimientosPanelLayout.setVerticalGroup(
             movimientosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGroup(movimientosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         appTabbedPane.addTab("Movimientos", movimientosPanel);
@@ -201,11 +215,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appTabbedPane)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(appTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(appTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -246,6 +262,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public JTextField getMontoTextField() {
         return montoTextField;
     }
+
+    public JTextPane getMovimientosTextPane() {
+        return movimientosTextPane;
+    }
+    
+    
    
     
  
@@ -262,9 +284,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField dniTextField;
     private javax.swing.JComboBox<vistas.viewmodels.ClienteOption> haciaComboBox;
     private javax.swing.JLabel haciaLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel montoLabel;
     private javax.swing.JTextField montoTextField;
     private javax.swing.JPanel movimientosPanel;
+    private javax.swing.JTextPane movimientosTextPane;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField nombreTextField;
     private javax.swing.JLabel saldoInicialLabel;
