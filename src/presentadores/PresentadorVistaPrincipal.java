@@ -31,7 +31,7 @@ public class PresentadorVistaPrincipal {
     }
 
     public void guardarDatosPersonales() {
-        //Obtengo los datos ingresados por el usuario
+
         String nombre = this.vistaPrincipal.getNombreTextField().getText();
         String apellido = this.vistaPrincipal.getApellidoTextField().getText();
         String dni = this.vistaPrincipal.getDniTextField().getText();
@@ -39,31 +39,22 @@ public class PresentadorVistaPrincipal {
         String nombreCompleto = (nombre + " " + apellido);
 
         try {
-            //Intento guardar los datos personales
+
             this.servicioCliente.guardarDatosPersonales(nombre, apellido, dni, saldoInicial);
             ClienteOption empleadoOption = new ClienteOption(nombreCompleto, dni);
 
             this.vistaPrincipal.getDesdeComboBox().addItem(empleadoOption);
             this.vistaPrincipal.getHaciaComboBox().addItem(empleadoOption);
-            /*
-            El empleado se guardó exitosamente. Limpiar la vista y mostrar un 
-            mensaje indicando el éxito.
-             */
 
-            //Limpiar vista
             this.vistaPrincipal.getNombreTextField().setText("");
             this.vistaPrincipal.getApellidoTextField().setText("");
             this.vistaPrincipal.getDniTextField().setText("");
             this.vistaPrincipal.getSaldoInicialTextField().setText("");
 
-            //Mostrar mensaje de éxito.
             JOptionPane.showMessageDialog(vistaPrincipal, "¡El cliente fue guardado correctamente!");
             actualizarMovimientos("Cliente guardado " + nombreCompleto + " " + dni + newline);
         } catch (IllegalArgumentException excepcion) {
-            /*
-            Llamé a "guardarDatosPersonales", pero ocurrió un error y por eso lanzó
-            una excepción. Mostremos dicho error en una nueva ventana.
-             */
+           
             JOptionPane.showMessageDialog(vistaPrincipal, excepcion.getMessage());
         }
     }
@@ -76,12 +67,14 @@ public class PresentadorVistaPrincipal {
             ClienteOption clienteHacia = (ClienteOption) this.vistaPrincipal.getHaciaComboBox().getSelectedItem();
             String dniClienteHacia = clienteHacia.getDni();
             
+            
+            //Hacer en servicio
             if (clienteDesde.equals(clienteHacia)){
                 throw new Exception("¡Los clientes deben ser distintos!");
             }
             
             this.servicioTransferencia.realizarTransferencia(
-                    this.servicioCliente.obtenerClienteSeleccionado(dniClienteDesde),
+                    this.servicioCliente.obtenerClienteSeleccionado(dniClienteDesde), //Cambiar metodo a obtenerCliente
                     this.servicioCliente.obtenerClienteSeleccionado(dniClienteHacia),
                     this.vistaPrincipal.getMontoTextField().getText()
             );
